@@ -15,6 +15,11 @@ public class Meteorite : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
+        if (collision.gameObject.CompareTag("Bound"))
+        {
+            gameObject.GetComponent<Collider2D>().enabled = false;
+        }
+
         if (collision.gameObject.CompareTag("FinishObj"))
         {
             Destroy(this.gameObject);
