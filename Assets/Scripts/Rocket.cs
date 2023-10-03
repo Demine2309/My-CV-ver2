@@ -7,15 +7,18 @@ public class Rocket : MonoBehaviour
     private Rigidbody2D rb;
     private Vector2 startPos;
 
+    public static Rocket Instance { get; private set; }
+
     private void Start()
     {
+        Instance = this;
         rb = GetComponent<Rigidbody2D>();
         startPos = transform.position;
         gravity = rb.gravityScale;
     }
 
     private void Update()
-    {
+    { 
         Vector2 vec = rb.velocity;
 
         float ang = Mathf.Atan2(vec.y, 10) * Mathf.Rad2Deg;
